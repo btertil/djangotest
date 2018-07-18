@@ -1,4 +1,5 @@
 from django.http import HttpResponseRedirect, HttpResponse
+from django.template import loader
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
@@ -18,6 +19,11 @@ class IndexView(generic.ListView):
 class DetailView(generic.DetailView):
     model = Question
     template_name = 'polls/detail.html'
+
+
+class DetailInfo(generic.DetailView):
+    model = Question
+    template_name = 'polls/info_template.html'
 
 
 class ResultsView(generic.DetailView):
@@ -47,7 +53,12 @@ def vote(request, question_id):
 def info(request):
     html = """
         <h2>To jest po prostu HttpResponse</h2><br><p>A to jakiś paragraf</p><br>request = '%s'<br>
-        <a href=\"/polls\">back</a>
+        <a href=\"/polls\">back to app page</a>
     """ % str(request)
 
     return HttpResponse(html)
+
+
+def testowytemplate(request):
+    template = loader.get_template('polls/testowytemplate.html')
+    return HttpResponse(template.render({'raz': 1, 'dwa': 2, 'trzy': 3}, request))
