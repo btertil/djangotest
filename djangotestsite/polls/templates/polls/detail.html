@@ -10,3 +10,4 @@
 {% endfor %}
 <input type="submit" value="Vote" />
 </form>
+<a href="{% url 'polls:detail' question.id %}info">Info odnośnie {{ question.question_text }}</a>
