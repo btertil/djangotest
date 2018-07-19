@@ -33,4 +33,5 @@ Według tutoriala: https://docs.djangoproject.com/en/2.0/intro/tutorial01/
 * Ale i tak *django.test.TestCase* implementuje te metody: assert
 * **LiveServerTestCase** i *Selenium* <- sama przeglądarka testuje
 
-* 
+* *myapp/static/myapp/style.css* <- **django.contrib.staticfiles**
+* **WAŻNE a nie ma w tutorialu!!** Potrzeba dodać static files do urls.py abybyły widoczne. Robi się to przez **django.contrib.staticfiles.urls import staticfiles_urlpatterns**: W *myapp/urls.py* <- dodać: *urlpatterns += staticfiles_urlpatterns()* bo inaczej syste, nie widzi static files w tym, css

@@ -1,4 +1,5 @@
 from django.urls import path
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 from . import views
 
@@ -12,3 +13,5 @@ urlpatterns = [
     path('<int:pk>/info/', views.DetailInfo.as_view(), name='info'),
     path('testowytemplate', views.testowytemplate, name='testowytemplate'),
 ]
+
+urlpatterns += staticfiles_urlpatterns()
