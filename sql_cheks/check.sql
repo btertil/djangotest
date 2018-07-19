@@ -4,7 +4,9 @@
 select * from polls_question;
 
 -- odpowiedzi
-select * from polls_choice;
+select * from polls_choice WHERE question_id = 2 ORDER BY votes DESC;
+
+select * from polls_komentarze;
 
 
 

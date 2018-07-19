@@ -30,3 +30,7 @@ Według tutoriala: https://docs.djangoproject.com/en/2.0/intro/tutorial01/
 * *$ python manage.py test polls* to execute tets
 * **The Django test client** to simulate a user interacting with the code at the **view level** (like a browser).
 * *django.test.utils.setup_test_environment()* a template renderer which will allow us to examine some additional attributes on responses such as **response.context** that otherwise wouldn’t be available.
+* Ale i tak *django.test.TestCase* implementuje te metody: assert
+* **LiveServerTestCase** i *Selenium* <- sama przeglądarka testuje
+
+* 

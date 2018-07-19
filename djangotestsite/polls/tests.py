@@ -17,7 +17,6 @@ class QuestionModelTests(TestCase):
         future_question = Question(pub_date=time)
         self.assertIs(future_question.was_published_recently(), False)
 
-
     def test_was_published_recently_with_old_question(self):
         """
         was_published_recently() returns False for questions whose pub_date
@@ -26,7 +25,6 @@ class QuestionModelTests(TestCase):
         time = timezone.now() - datetime.timedelta(days=1, seconds=1)
         old_question = Question(pub_date=time)
         self.assertIs(old_question.was_published_recently(), False)
-
 
     def test_was_published_recently_with_recent_question(self):
         """
@@ -49,6 +47,7 @@ def create_question(question_text, days):
 
 
 class QuestionIndexViewTests(TestCase):
+
     def test_no_questions(self):
         """
         If no questions exist, an appropriate message is displayed.
@@ -107,6 +106,7 @@ class QuestionIndexViewTests(TestCase):
 
 
 class QuestionDetailViewTests(TestCase):
+
     def test_future_question(self):
         """
         The detail view of a question with a pub_date in the future
@@ -126,3 +126,13 @@ class QuestionDetailViewTests(TestCase):
         url = reverse('polls:detail', args=(past_question.id,))
         response = self.client.get(url)
         self.assertContains(response, past_question.question_text)
+
+
+class MojeDodatkoweTesty(TestCase):
+
+    def test_moje_dodatkowe_testy_logiczne_testowe(self):
+        """To jest mój testowy test case"""
+        self.assertIs(2 > 1, True)
+        self.assertEqual(1, 1, "to jest eiadomość z testu self.assertEqual")
+        self.assertIn('a', 'abcdef', msg="to jest test z assertIn")
+        assert(30 >= 1, "Po prostu assert")
