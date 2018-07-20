@@ -35,6 +35,19 @@ class QuestionModelTests(TestCase):
         recent_question = Question(pub_date=time)
         self.assertIs(recent_question.was_published_recently(), True)
 
+    # TODO: To powinien być test, czy strona wyświetla tylko pytania na które sa jakieś opcje do wyboru
+    # Raczej to jest test /polls/cyferka_która_nie_ma_checks
+    # i powinien być w klasie
+    def test_no_questions_with_empty_choices(self):
+        """
+        Na razie tylko sprawdza czy działa question_text ale docelowo ma to być test czy nie wyświetla pytań,
+        które nie mają odpowiedzi
+        """
+        time = timezone.now()
+        question_text = "no choices"
+        Question.objects.create(question_text=question_text, pub_date=time)
+        assert("no choices".__contains__("no"))
+
 
 def create_question(question_text, days):
     """
@@ -131,8 +144,10 @@ class QuestionDetailViewTests(TestCase):
 class MojeDodatkoweTesty(TestCase):
 
     def test_moje_dodatkowe_testy_logiczne_testowe(self):
-        """To jest mój testowy test case"""
+        """
+        To jest mój testowy test case
+        """
         self.assertIs(2 > 1, True)
         self.assertEqual(1, 1, "to jest eiadomość z testu self.assertEqual")
         self.assertIn('a', 'abcdef', msg="to jest test z assertIn")
-        assert(30 >= 1, "Po prostu assert")
+        assert 30 >= 1, "Po prostu assert"
