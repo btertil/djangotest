@@ -1,0 +1,4 @@
+.idea/
+djangotestsite/djangotestsite/__pycache__
+djangotestsite/polls/__pycache__
+djangotestsite/polls/migrations/__pycache__
